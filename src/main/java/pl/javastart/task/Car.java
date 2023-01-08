@@ -8,7 +8,7 @@ public class Car extends Vehicle {
         this.airConditioningSystemStatus = airConditioningSystemStatus;
     }
 
-    public String printAirConditioningSystemStatus() {
+    private String printAirConditioningSystemStatus() {
         if (airConditioningSystemStatus) {
             return "ON";
         } else {
@@ -18,10 +18,6 @@ public class Car extends Vehicle {
 
     public boolean isAirConditioningSystemStatus() {
         return airConditioningSystemStatus;
-    }
-
-    public void setAirConditioningSystemStatus(boolean airConditioningSystemStatus) {
-        this.airConditioningSystemStatus = airConditioningSystemStatus;
     }
 
     @Override
