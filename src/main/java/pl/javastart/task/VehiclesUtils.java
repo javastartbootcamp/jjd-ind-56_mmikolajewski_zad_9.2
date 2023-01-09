@@ -1,16 +1,11 @@
 package pl.javastart.task;
 
 public class VehiclesUtils {
-
-    static double countMaximumDistance(Vehicle vehicle) {
-        return (vehicle.getTankCapacity() / vehicle.countConsumption()) * 100;
-    }
-
-    static void getArrayInfo(Vehicle[] vehicles) {
+    static void printArrayInfo(Vehicle[] vehicles) {
         for (Vehicle vehicle : vehicles) {
             if (vehicle != null) {
                 vehicle.printInfo();
-                System.out.printf("Max dystans: %.2fkm\n", countMaximumDistance(vehicle));
+                System.out.printf("Zasięg pojazdu: %.2fkm\n", vehicle.getRange());
                 System.out.println("_________________________________________________________________");
             }
         }

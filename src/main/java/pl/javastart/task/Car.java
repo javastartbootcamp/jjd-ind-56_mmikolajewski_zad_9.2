@@ -2,13 +2,14 @@ package pl.javastart.task;
 
 public class Car extends Vehicle {
     private boolean airConditioningSystemStatus;
+    private static final double EXTRA_FUEL_CONSUMPTION_TOWARD_AIR_CONDITIONING = 0.8;
 
     public Car(String name, double tankCapacity, double averageFuelConsumption, boolean airConditioningSystemStatus) {
         super(name, tankCapacity, averageFuelConsumption);
         this.airConditioningSystemStatus = airConditioningSystemStatus;
     }
 
-    private String printAirConditioningSystemStatus() {
+    private String getAirConditioningSystemStatus() {
         if (airConditioningSystemStatus) {
             return "ON";
         } else {
@@ -20,14 +21,12 @@ public class Car extends Vehicle {
         return airConditioningSystemStatus;
     }
 
-    @Override
     public void turnAirConditionerOn() {
         if (!airConditioningSystemStatus) {
             this.airConditioningSystemStatus = true;
         }
     }
 
-    @Override
     public void turnAirConditionerOff() {
         if (!airConditioningSystemStatus) {
             this.airConditioningSystemStatus = true;
@@ -37,7 +36,7 @@ public class Car extends Vehicle {
     @Override
     double countConsumption() {
         if (airConditioningSystemStatus) {
-            return getAverageFuelConsumption() + 0.8;
+            return getAverageFuelConsumption() + EXTRA_FUEL_CONSUMPTION_TOWARD_AIR_CONDITIONING;
         } else {
             return getAverageFuelConsumption();
         }
@@ -46,7 +45,7 @@ public class Car extends Vehicle {
     @Override
     void printInfo() {
         super.printInfo();
-        System.out.println(", klimatyzacja: " + printAirConditioningSystemStatus());
+        System.out.println(", klimatyzacja: " + getAirConditioningSystemStatus());
     }
 }
 

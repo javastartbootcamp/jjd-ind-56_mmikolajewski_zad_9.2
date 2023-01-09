@@ -3,6 +3,9 @@ package pl.javastart.task;
 public class Truck extends Car {
     private int weight;
 
+    private static final double EXTRA_FUEL_CONSUMPTION_TOWARD_AIR_CONDITIONING = 1.6;
+    private static final double EXTRA_FUEL_CONSUMPTION_TOWARD_OVERWEIGHT = 0.5;
+
     public Truck(String name, double tankCapacity, double averageFuelConsumption, boolean isAirConditioningSystemOn, int weight) {
         super(name, tankCapacity, averageFuelConsumption, isAirConditioningSystemOn);
         this.weight = weight;
@@ -20,7 +23,7 @@ public class Truck extends Car {
     double countConsumption() {
         double consumption = getAverageFuelConsumption();
         if (isAirConditioningSystemStatus()) {
-            consumption += 1.6;
+            consumption += EXTRA_FUEL_CONSUMPTION_TOWARD_AIR_CONDITIONING;
         }
         consumption += countConsumptionForWeight();
         return consumption;
@@ -28,17 +31,7 @@ public class Truck extends Car {
 
     private double countConsumptionForWeight() {
         int howManyHundreds = weight / 100;
-        return howManyHundreds * 0.5;
-    }
-
-    @Override
-    public void turnAirConditionerOn() {
-        super.turnAirConditionerOn();
-    }
-
-    @Override
-    public void turnAirConditionerOff() {
-        super.turnAirConditionerOff();
+        return howManyHundreds * EXTRA_FUEL_CONSUMPTION_TOWARD_OVERWEIGHT;
     }
 
     @Override

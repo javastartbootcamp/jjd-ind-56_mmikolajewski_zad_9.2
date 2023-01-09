@@ -39,14 +39,12 @@ public class Vehicle {
         return averageFuelConsumption;
     }
 
-    public void turnAirConditionerOn() {
-    }
-
-    public void turnAirConditionerOff() {
-
+    double getRange() {
+        return (tankCapacity / countConsumption()) * 100;
     }
 
     void printInfo() {
-        System.out.print("Nazwa pojazdu: " + name + ", pojemność baku: " + tankCapacity + ", średnie spalnie: " + countConsumption());
+        System.out.print("Nazwa pojazdu: " + name + ", pojemność baku: " + tankCapacity
+                + ", średnie spalnie: " + countConsumption() + "l/100km");
     }
 }
